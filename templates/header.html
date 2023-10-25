@@ -1,2 +1,12 @@
 <!-- header.html -->
-<h1 style="font-family:微軟正黑體;">歡迎光臨 文學天地</h1>
+{% load static %}
+<style>
+    .image-container img {
+        width: 200px;
+        height: auto;
+    }
+</style>
+
+<div class='well image-container'>
+    <img src="{% static "images/123.jpg" %}">
+</div>
