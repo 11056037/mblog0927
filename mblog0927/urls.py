@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ('',mv.homepage,name="homepage"),
     path('post/<slug:slug>/',mv.showpost,name='showpost'), 
+    path('about/<int:num>',mv.about),
+    path('about/',mv.about,{'num':1}),
+    path('about/<int:yr>/<int:mon>/<int:day>/<int:post_num>',mv.Post,name='post-url')
 ]#網址 #在哪個函式

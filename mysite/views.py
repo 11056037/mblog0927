@@ -14,6 +14,33 @@ def showpost(request,slug):
     post=Post.objects.get(slug=slug)
     if post !=None:
         return render(request,'post.html',locals())
+    
+import random    
+def about(request,num=-1):
+    quotes = ['今日事，今日畢',
+              '要怎麼收穫，先那麼栽',
+              '知識就是力量',
+              '一個人的個性就是他的命運']
+    if num==-1 or num>4:
+        quote = random.choice(quotes)
+    else:
+        quote=quotes[num]   
+    return render(request, 'about.html', locals())   
+    
+def about(request, author_no):
+    html = "<h2>Here is Author:{}'s about page!</h2><hr>".format(author_no)
+    return HttpResponse(html)
+
+# def about(request,num=-1):
+#     mhtml=f''' 
+# <html>
+# <body>
+# <h1>I</h1>
+# <h3>am in NTUB</h3>
+# <h2>{num}</h2>
+# </body></html>
+# '''
+#     return  HttpResponse(mhtml)
 
 '''
 def homepage(request):
