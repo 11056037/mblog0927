@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from mysite.models import Post #把models.py已設好的東西匯入
+from mysite.models import Post,Comment #把models.py已設好的東西匯入
 from datetime import datetime
 from django.shortcuts import redirect
 
@@ -11,11 +11,20 @@ def homepage(request):
     hour = now.timetuple().tm_hour
     print(f'hour = {hour}')
     return render(request, 'index.html', locals())
-    
+
+def show_all_posts(request):
+    posts = Post.objects.all()
+    return render(request, 'allposts.html', locals())
+
 def showpost(request, slug):
     post = Post.objects.get(slug=slug) 
     return render(request, 'post.html', locals())
     #select * from post where slug=%slug
+    
+def show_comments(request, post_id):
+    #comments = Comment.objects.filter(post=post_id)
+    comments = Post.objects.get(id=post_id).comment_set.all()
+    return render(request, 'comments.html', locals())    
     
 import random
 def about(request, num=-1):

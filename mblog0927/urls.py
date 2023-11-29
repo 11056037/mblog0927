@@ -22,9 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name="homepage"),
     path('post/<slug:slug>/', views.showpost, name="showpost"),
+    path('post/', views.show_all_posts, name="show-all-posts"),
+    path('post/<int:post_id>/comments', views.show_comments, name='show-comments'),
     path('about/', views.about),
     path('about/<int:num>', views.about, name='about'),
-    path('post/<int:y>/<int:m>/<int:d>/<int:num>', views.showpost, name='post-url'),
     path('carlist/', views.carlist),
     path('carlist/<int:maker>/', views.carlist, name='carlist-url'),
-]#網址 #在哪個函式
+]
