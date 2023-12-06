@@ -64,3 +64,28 @@ def homepage(request):
         post_lists.append(f'No. {counter}-{post} <br>')
     return HttpResponse(post_lists)
 '''
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+#reverse 重新導向
+
+def new_post(request):
+    print(f'form method:{request.method}')
+    if request.method=="GET":
+        return render(request,'myform_1.html',locals())
+    elif request.method == 'POST':
+        title = request.POST['title']
+        slug = request.POST['slug']
+        content = request.POST['content']
+        post = Post(title=title, slug=slug, body=content)
+        post.save()
+        return HttpResponseRedirect(reverse('show-all-posts'))
+        #return render(request,'myform_1.html',locals())
+'''    
+    try:
+        username=request.GET['user_id']
+        password=request.GET['password']
+        print(f'username:{username},password:{password}')
+        return render(request,'myform_1.html',locals())
+    except:
+        return render(request,'myform_1.html',locals())
+'''    
