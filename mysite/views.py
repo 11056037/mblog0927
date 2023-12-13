@@ -9,7 +9,8 @@ def homepage(request):
     posts = Post.objects.all()
     now = datetime.now()
     hour = now.timetuple().tm_hour
-    print(f'hour = {hour}')
+    years=range(1960,2024)
+    #print(f'hour = {hour}')
     return render(request, 'index.html', locals())
 
 def show_all_posts(request):
