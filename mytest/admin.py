@@ -1,9 +1,12 @@
 from django.contrib import admin
-from mysite import models
-
+from mytest.models import Post, Mood
 # Register your models here.
+
 class PostAdmin(admin.ModelAdmin):
-    list_display=('nickname', 'message', 'del_pass','enabled')
+    list_display = ('nickname','message','del_pass', 'pub_time', 'enabled')
     
-admin.site.register(models.Mood)
-admin.site.register(models.Post, PostAdmin)
+class CommentAdmin(admin.ModelAdmin):
+     list_display = ('text','pub_date')   
+    
+admin.site.register(Post, PostAdmin)
+admin.site.register(Mood)
