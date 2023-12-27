@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mv.homepage, name="homepage"),
     path('post/<slug:slug>/', mv.showpost, name="showpost"),
-    path('post/', mv.show_all_posts, name="show-all-posts"),
+    path('post/', mv.show_all_post, name="show-all-post"),
     path('post/<int:post_id>/comments', mv.show_comments, name='show-comments'),
     path('about/', mv.about),
     path('about/<int:num>', mv.about, name='about'),
@@ -32,5 +32,8 @@ urlpatterns = [
     path('post/new', mv.new_post, name="post-new"),
     path('test/', testv.index, name="test-new"),
     path('test/delpost/<int:pid>/', testv.delpost),
-    path('test/contact', testv.contact)
+    path('test/contact', testv.contact),
+    path('post2db/', testv.post2db),
+    path('register/', testv.register),
+    path('login/', testv.login)
 ]
